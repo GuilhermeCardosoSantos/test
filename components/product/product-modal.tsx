@@ -1,6 +1,9 @@
 "use client"
 
+// hooks
 import { useEffect, useRef } from "react"
+// ui
+import Button from "@/components/UI/button"
 
 type ModalProps = {
   open: boolean
@@ -10,15 +13,13 @@ type ModalProps = {
 
 export function ProductModal({ open, onClose, children }: ModalProps) {
   const modalRef = useRef<HTMLDivElement>(null)
-
-  // ESC + focus trap + scroll lock
+  // effect
   useEffect(() => {
     function handleKey(e: KeyboardEvent) {
       if (e.key === "Escape") {
         onClose()
       }
 
-      // 🔒 focus trap
       if (e.key === "Tab" && modalRef.current) {
         const focusable = modalRef.current.querySelectorAll<HTMLElement>(
           "button, [href], input, textarea, select"
@@ -47,7 +48,6 @@ export function ProductModal({ open, onClose, children }: ModalProps) {
       document.body.style.overflow = "hidden"
       window.addEventListener("keydown", handleKey)
 
-      // foca no modal
       setTimeout(() => {
         modalRef.current?.focus()
       }, 0)
@@ -59,6 +59,7 @@ export function ProductModal({ open, onClose, children }: ModalProps) {
     }
   }, [open, onClose])
 
+  // render
   if (!open) return null
 
   return (
@@ -74,18 +75,16 @@ export function ProductModal({ open, onClose, children }: ModalProps) {
         className="bg-(--card) text-foreground rounded-lg p-5 w-full max-w-md shadow-xl outline-none transition-colors"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* CONTENT */}
         <div className="flex flex-col gap-3">
           {children}
         </div>
 
-        {/* ACTION */}
-        <button
+        <Button
           onClick={onClose}
-          className="mt-5 w-full bg-(--border) text-foreground rounded py-2 hover:opacity-80 transition"
+          className="mt-5 w-full cursor-pointer bg-(--border) text-foreground rounded py-2 hover:opacity-80 transition"
         >
           Fechar
-        </button>
+        </Button>
       </div>
     </div>
   )
