@@ -78,6 +78,7 @@ export default function ProductsLayoutClient({
                         <div className="flex items-center gap-1 sm:gap-2">
 
                             <Button
+                                aria-label="Alternar tema"
                                 onClick={toggleTheme}
                                 className="p-2 rounded-md hover:bg-white/10 transition active:scale-95"
                             >
@@ -85,6 +86,7 @@ export default function ProductsLayoutClient({
                             </Button>
 
                             <Button
+                                aria-label="Sair"
                                 onClick={handleLogout}
                                 className="p-2 rounded-md hover:bg-white/10 transition active:scale-95"
                             >

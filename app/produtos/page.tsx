@@ -22,7 +22,7 @@ export default function ProductsPage() {
     const [search, setSearch] = useState("")
     const [sort, setSort] = useState<"price-asc" | "price-desc" | "name-asc" | "name-desc">("name-asc")
     const [onlyFavorites, setOnlyFavorites] = useState(false)
-    const [fakeError, setFakeError] = useState(true)
+    const [fakeError, setFakeError] = useState(false)
     const [products, setProducts] = useState<Product[]>([])
     // refs
     const isLoadingMore = useRef(false)
