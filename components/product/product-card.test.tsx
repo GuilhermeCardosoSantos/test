@@ -3,7 +3,7 @@ import { describe, it, expect, vi } from "vitest"
 import { ProductCard } from "./product-card"
 import { Product } from "@/types/produtos"
 
-// mock do next/image
+// mock
 vi.mock("next/image", () => ({
     default: (props: { src: string; alt: string; fill: boolean; className: string }) => {
         return (

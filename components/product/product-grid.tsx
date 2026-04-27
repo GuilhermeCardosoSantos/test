@@ -24,7 +24,7 @@ export function ProductGrid({
     return (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
             {products.map((product, index) => (
-                <div key={`${product.codigo}-${index}`}>
+                <div data-testid="product-card" key={`${product.codigo}-${index}`}>
                     <ProductCard
                         key={product.codigo}
                         product={product}
