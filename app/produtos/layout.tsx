@@ -52,22 +52,23 @@ export default function ProductsLayout({
 
                     <div className="flex items-center gap-3 sm:gap-5">
 
-                        <div className="hidden sm:flex items-center gap-4">
+                        <div className="sm:flex items-center gap-4">
+                            <div className="hidden sm:flex">
+                                <div className="relative">
+                                    <Mail size={18} />
 
-                            <div className="relative">
-                                <Mail size={18} />
+                                    <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] min-w-4 h-4 px-1 rounded-full flex items-center justify-center">
+                                        11
+                                    </span>
+                                </div>
 
-                                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] min-w-4 h-4 px-1 rounded-full flex items-center justify-center">
-                                    11
-                                </span>
-                            </div>
+                                <div className="relative">
+                                    <Phone size={18} />
 
-                            <div className="relative">
-                                <Phone size={18} />
-
-                                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] min-w-4 h-4 px-1 rounded-full flex items-center justify-center">
-                                    11
-                                </span>
+                                    <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] min-w-4 h-4 px-1 rounded-full flex items-center justify-center">
+                                        11
+                                    </span>
+                                </div>
                             </div>
 
                             <button
