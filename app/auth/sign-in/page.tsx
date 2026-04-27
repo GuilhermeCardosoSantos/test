@@ -63,14 +63,14 @@ export default function SignInPage() {
     }
 
     return (
-        <form onSubmit={handleSubmit} className='flex flex-col gap-4 items-center justify-center'>
+        <form onSubmit={handleSubmit} className='flex flex-col gap-4 items-center justify-center sm:mt-10'>
             <div>
-                <div className='flex flex-col w-100 gap-2'>
+                <div className='flex flex-col w-full gap-2'>
                     <Input name="email" placeholder="Usuário" icon={<UserRound size={26} />} />
                     <Input name="senha" placeholder="Senha" type="password" icon={<LockKeyholeOpen size={26} />} />
                 </div>
-                <div className='flex w-full justify-between mt-3'>
-                    <div>
+                <div className='flex flex-col sm:flex-row w-full gap-2 h-15 text-center items-center justify-center sm:justify-between mt-3 sm:mt-0'>
+                    <div className='flex items-center justify-center'>
                         <label className="flex items-center select-none gap-2 text-sm text-white cursor-pointer">
                             <input
                                 name="remember"
@@ -82,14 +82,14 @@ export default function SignInPage() {
                     </div>
                     <div>
                         <Link
-                            className='select-none cursor-pointer hover:underline text-sm' href={''}                        >
+                            className='select-none text-white cursor-pointer hover:underline text-sm' href={''}                        >
                             Esqueceu a senha?
                         </Link>
                     </div>
                 </div>
             </div>
 
-            <div className='w-50 mt-5'>
+            <div className='w-50 sm:mt-5'>
                 <Button
                     type='submit'
                 >
