@@ -88,18 +88,18 @@ export default function SignInPage() {
                 </div>
                 <div className='flex flex-col sm:flex-row w-full gap-2 h-15 text-center items-center justify-center sm:justify-between mt-3 sm:mt-0'>
                     <div className='flex items-center justify-center'>
-                        <label className="flex items-center select-none gap-2 text-sm text-white cursor-pointer">
+                        <label className="flex items-center select-none gap-2 text-sm text-white ">
                             <input
                                 name="remember"
                                 type="checkbox"
-                                className="w-4 h-4 accent-white cursor-pointer"
+                                className="w-4 h-4 accent-white "
                             />
                             Manter logado
                         </label>
                     </div>
                     <div>
                         <Link
-                            className='select-none text-white cursor-pointer hover:underline text-sm' href={''}                        >
+                            className='select-none text-white  hover:underline text-sm' href={''}                        >
                             Esqueceu a senha?
                         </Link>
                     </div>

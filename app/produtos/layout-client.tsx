@@ -39,62 +39,64 @@ export default function ProductsLayoutClient({
     return (
         <div className="min-h-screen bg-background">
 
-            <header className="bg-primary text-white ">
-                <div className="w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+            <header className="bg-primary text-white">
+                <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
 
-                    <div className="flex gap-2 bg-white py-2 px-3 rounded-xl items-center">
+
+                    <div className="flex gap-2 bg-white py-1.5 px-2 rounded-lg items-center">
                         <Image
                             src="https://imgproductioncrm.s3.us-east-2.amazonaws.com/logobanner.png"
                             alt="Logo"
-                            width={110}
-                            height={36}
+                            width={90}
+                            height={30}
                             className="object-contain"
                         />
                     </div>
 
-                    <div className="flex items-center gap-3 sm:gap-5">
+                    <div className="flex items-center gap-2 sm:gap-5">
 
-                        <div className="sm:flex items-center gap-3">
-                            <div className="hidden sm:flex gap-4">
-                                <div className="relative">
-                                    <Mail size={18} />
 
-                                    <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] min-w-4 h-4 px-1 rounded-full flex items-center justify-center">
-                                        11
-                                    </span>
-                                </div>
+                        <div className="hidden sm:flex items-center gap-4">
 
-                                <div className="relative">
-                                    <Phone size={18} />
-
-                                    <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] min-w-4 h-4 px-1 rounded-full flex items-center justify-center">
-                                        11
-                                    </span>
-                                </div>
+                            <div className="relative">
+                                <Mail size={18} />
+                                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] min-w-4 h-4 px-1 rounded-full flex items-center justify-center">
+                                    11
+                                </span>
                             </div>
-                            <div>
-                                <Button
-                                    onClick={toggleTheme}
-                                    className="p-2 rounded-lg cursor-pointer hover:bg-white/10 transition"
-                                >
-                                    {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-                                </Button>
 
-                                <Button
-                                    onClick={handleLogout}
-                                    className="p-2 rounded-lg cursor-pointer hover:bg-white/10 transition"
-                                >
-                                    <LogOut size={18} />
-                                </Button>
+                            <div className="relative">
+                                <Phone size={18} />
+                                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] min-w-4 h-4 px-1 rounded-full flex items-center justify-center">
+                                    11
+                                </span>
                             </div>
+
+                        </div>
+
+
+                        <div className="flex items-center gap-1 sm:gap-2">
+
+                            <Button
+                                onClick={toggleTheme}
+                                className="p-2 rounded-md hover:bg-white/10 transition active:scale-95"
+                            >
+                                {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+                            </Button>
+
+                            <Button
+                                onClick={handleLogout}
+                                className="p-2 rounded-md hover:bg-white/10 transition active:scale-95"
+                            >
+                                <LogOut size={18} />
+                            </Button>
+
                         </div>
 
                         <div className="flex items-center gap-2">
 
-                            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-full overflow-hidden">
-                                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-full flex items-center justify-center">
-                                    <UserRound size={18} className="text-primary" />
-                                </div>
+                            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-full flex items-center justify-center">
+                                <UserRound size={18} className="text-primary" />
                             </div>
 
                             <div className="hidden sm:block text-right text-sm">
@@ -109,7 +111,7 @@ export default function ProductsLayoutClient({
                 </div>
             </header>
 
-            <main className="w-7xl mx-auto px-4 py-3 flex">
+            <main className="max-w-7xl mx-auto px-4 py-4">
                 {children}
             </main>
 

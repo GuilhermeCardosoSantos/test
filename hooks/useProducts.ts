@@ -1,6 +1,9 @@
+// query
 import { useQuery } from "@tanstack/react-query"
+// services
 import { getProducts } from "@/services/product.service"
-import axios from "axios"
+// axios type
+import { AxiosError } from "axios"
 
 export function useProducts() {
   return useQuery({
@@ -9,12 +12,8 @@ export function useProducts() {
     refetchOnWindowFocus: true,
     staleTime: 1000 * 60 * 5, // 5 min cache
 
-    retry: (failureCount, error) => {
-      if (axios.isAxiosError(error)) {
-        // erro de rede (sem resposta)
-        if (!error.response) return failureCount < 3
-      }
-
+    retry: (failureCount, error: AxiosError) => {
+      if (!error.response) return failureCount < 3
       return false
     },
 

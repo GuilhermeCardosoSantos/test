@@ -4,7 +4,7 @@
 import { useEffect, useRef } from "react"
 // ui
 import Button from "@/components/UI/button"
-
+// type
 type ModalProps = {
   open: boolean
   onClose: () => void
@@ -12,6 +12,7 @@ type ModalProps = {
 }
 
 export function ProductModal({ open, onClose, children }: ModalProps) {
+  // ref
   const modalRef = useRef<HTMLDivElement>(null)
   // effect
   useEffect(() => {
@@ -81,7 +82,7 @@ export function ProductModal({ open, onClose, children }: ModalProps) {
 
         <Button
           onClick={onClose}
-          className="mt-5 w-full cursor-pointer bg-(--border) text-foreground rounded py-2 hover:opacity-80 transition"
+          className="mt-5 w-full  bg-(--border) text-foreground rounded py-2 hover:opacity-80 transition"
         >
           Fechar
         </Button>

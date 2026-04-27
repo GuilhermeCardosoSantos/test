@@ -1,12 +1,15 @@
-// useSignIn.ts
+// hooks
 import { useMutation } from "@tanstack/react-query"
+// service
 import { SignIn } from "@/services/auth.service"
+// axios type
+import { AxiosError } from "axios"
 
 export function useSignIn() {
   return useMutation({
     mutationFn: SignIn,
 
-    retry: (failureCount, error: any) => {
+    retry: (failureCount, error: AxiosError) => {
       if (!error.response) return failureCount < 3
       return false
     },

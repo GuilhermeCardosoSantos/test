@@ -1,17 +1,27 @@
 "use client"
-
 // hooks
 import { useState } from "react"
 // components
 import { ProductModal } from "./product-modal"
 // ui
 import Button from "@/components/UI/button"
-// type
-import { Product } from "@/types/produtos"
 // next
 import Image from "next/image"
+// icon
+import { Heart,  HeartOff} from "lucide-react"
+// type
+import { Product } from "@/types/produtos"
+type Props = {
+  product: Product
+  isFavorite: boolean
+  onToggleFavorite: () => void
+}
 
-export function ProductCard({ product }: { product: Product }) {
+export function ProductCard({
+  product,
+  isFavorite,
+  onToggleFavorite,
+}: Props) {
   // state
   const [open, setOpen] = useState(false)
   // function
@@ -28,23 +38,26 @@ export function ProductCard({ product }: { product: Product }) {
     ]
 
     let hash = 0
-
     for (let i = 0; i < seed.length; i++) {
       hash = seed.charCodeAt(i) + ((hash << 5) - hash)
     }
 
-    const colors = []
-
-    for (let i = 0; i < 4; i++) {
+    return Array.from({ length: 4 }).map((_, i) => {
       const index = Math.abs((hash + i) % baseColors.length)
-      colors.push(baseColors[index])
-    }
-
-    return colors
+      return baseColors[index]
+    })
   }
 
   return (
-    <div className="bg-(--card) border border-(--border) rounded-md p-3 flex flex-col h-full">
+    <div className="bg-(--card) border border-(--border) rounded-md p-3 flex flex-col h-full relative transition hover:shadow-md">
+
+      <Button
+        onClick={onToggleFavorite}
+        className="absolute -top-3 -left-2 z-10 text-lg border border-(--border) bg-background rounded-full p-1 opacity-90 hover:opacity-100 transition"
+        aria-label="Favoritar produto"
+      >
+        {isFavorite ? <Heart className="w-4 h-4 fill-red-500 text-red-500" /> : <HeartOff className="w-4 h-4" />}
+      </Button>
 
       <div className="text-center">
         <h2 className="text-sm font-semibold text-foreground uppercase line-clamp-2 min-h-8">
@@ -53,8 +66,8 @@ export function ProductCard({ product }: { product: Product }) {
         <p className="text-xs text-(--muted)">{product.codigo}</p>
       </div>
 
-      <div className="relative border border-(--border) rounded p-2 flex items-center justify-center h-35">
-        <span className="absolute top-1 right-1 text-[7px] text-blue-500 font-bold uppercase">
+      <div className="relative border border-(--border) rounded p-2 flex items-center justify-center h-36 mt-1">
+        <span className="absolute -top-4 sm:top-1 right-1 z-20 text-[7px] text-blue-500 font-bold uppercase">
           EXCLUSIVO!
         </span>
 
@@ -62,12 +75,12 @@ export function ProductCard({ product }: { product: Product }) {
           src={product.imagem}
           alt={product.nome}
           fill
-          className="max-h-full object-contain"
+          className="object-contain"
         />
       </div>
 
       <div className="flex items-center gap-2 border border-(--border) rounded px-2 py-1 text-xs text-(--muted) mt-2">
-        <div className="text-green-500">📦</div>
+        <span className="text-green-500">📦</span>
         <span>com embalagem especial</span>
       </div>
 
@@ -81,12 +94,11 @@ export function ProductCard({ product }: { product: Product }) {
         </span>
 
         <div className="flex gap-1 flex-wrap mt-1">
-          {(generateColors(product.codigo)
-          ).map((cor: string, i: number) => (
+          {generateColors(product.codigo).map((color, i) => (
             <span
               key={i}
-              className="w-3 h-3 rounded-full border"
-              style={{ backgroundColor: cor }}
+              className="w-3 h-3 rounded-full border border-(--border)"
+              style={{ backgroundColor: color }}
             />
           ))}
         </div>
@@ -107,12 +119,13 @@ export function ProductCard({ product }: { product: Product }) {
         </div>
 
         <Button
-          className="bg-primary text-white cursor-pointer text-sm py-2 rounded w-full font-semibold hover:opacity-90 transition"
+          className="bg-primary text-white  text-sm py-2 rounded w-full font-semibold hover:opacity-90 transition"
           onClick={() => setOpen(true)}
         >
           CONFIRA
         </Button>
-        
+
+
         <ProductModal open={open} onClose={() => setOpen(false)}>
           <h2 className="text-lg font-bold">{product.nome}</h2>
 
