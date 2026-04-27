@@ -8,7 +8,7 @@ import Button from "@/components/UI/button"
 // next
 import Image from "next/image"
 // icon
-import { Heart,  HeartOff} from "lucide-react"
+import { Heart, HeartOff } from "lucide-react"
 // type
 import { Product } from "@/types/produtos"
 type Props = {
@@ -126,26 +126,30 @@ export function ProductCard({
         </Button>
 
 
-        <ProductModal open={open} onClose={() => setOpen(false)}>
-          <h2 className="text-lg font-bold">{product.nome}</h2>
+        {open && (
+          <ProductModal open={open} onClose={() => setOpen(false)}>
+            <div data-testid="product-modal">
+              <h2 className="text-lg font-bold">{product.nome}</h2>
 
-          <div className="relative w-full h-40">
-            <Image
-              src={product.imagem}
-              alt={product.nome}
-              fill
-              className="object-contain"
-            />
-          </div>
+              <div className="relative w-full h-40">
+                <Image
+                  src={product.imagem}
+                  alt={product.nome}
+                  fill
+                  className="object-contain"
+                />
+              </div>
 
-          <p className="text-sm text-(--muted)">
-            {product.descricao}
-          </p>
+              <p className="text-sm text-(--muted)">
+                {product.descricao}
+              </p>
 
-          <p className="font-bold text-lg">
-            R$ {Number(product.preco).toFixed(2)}
-          </p>
-        </ProductModal>
+              <p className="font-bold text-lg">
+                R$ {Number(product.preco).toFixed(2)}
+              </p>
+            </div>
+          </ProductModal>
+        )}
       </div>
     </div>
   )
