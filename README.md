@@ -115,7 +115,7 @@ http://localhost:3000
 📌 Resultado obtido:
 
 ### SignIn
-![Lighthouse Desktop SignIn](./public/page-signin.gif.gif)
+![Lighthouse Desktop SignIn](./public/page-signin.gif)
 
 
 ### Produtos
