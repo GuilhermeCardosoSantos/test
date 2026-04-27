@@ -9,6 +9,8 @@ import { useAuthStore } from "@/store/auth.store"
 import { Mail, Phone, UserRound, Sun, Moon, LogOut } from "lucide-react"
 // theme
 import { useThemeStore } from "@/store/theme.store"
+// ui
+import Button from "@/components/UI/button"
 
 export default function ProductsLayout({
     children,
@@ -71,19 +73,19 @@ export default function ProductsLayout({
                                 </div>
                             </div>
                             <div>
-                                <button
+                                <Button
                                     onClick={toggleTheme}
-                                    className="p-2 rounded-lg hover:bg-white/10 transition"
+                                    className="p-2 rounded-lg cursor-pointer hover:bg-white/10 transition"
                                 >
                                     {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-                                </button>
+                                </Button>
 
-                                <button
+                                <Button
                                     onClick={handleLogout}
-                                    className="p-2 rounded-lg hover:bg-white/10 transition"
+                                    className="p-2 rounded-lg cursor-pointer hover:bg-white/10 transition"
                                 >
                                     <LogOut size={18} />
-                                </button>
+                                </Button>
                             </div>
                         </div>
 
