@@ -6,8 +6,10 @@ import Input from '@/components/UI/input'
 // icon
 import { UserRound, LockKeyholeOpen } from 'lucide-react'
 // hooks
+import { useEffect, useState } from 'react'
 import { useSignIn } from '@/hooks/useSignIn'
 import { useAuthStore } from "@/store/auth.store"
+import { SignInSkeleton } from '@/components/skeletons/sign-in-skeleton'
 // toast
 import toast from "react-hot-toast"
 // next
@@ -16,6 +18,8 @@ import { useRouter } from "next/navigation"
 
 
 export default function SignInPage() {
+    // states
+    const [loading, setLoading] = useState(true)
     // hooks
     const setAuth = useAuthStore((s) => s.setAuth)
     const { mutate, isPending } = useSignIn()
@@ -45,9 +49,9 @@ export default function SignInPage() {
                         toast.error(data.message)
                         return
                     }
-                    if(remember){
+                    if (remember) {
                         document.cookie = `token=${data.token_de_acesso}; path=/; max-age=${60 * 60 * 24 * 7}`
-                    }else{
+                    } else {
                         document.cookie = `token=${data.token_de_acesso}; path=/`
                     }
                     setAuth(data.dados_usuario)
@@ -60,6 +64,19 @@ export default function SignInPage() {
                 },
             }
         )
+    }
+    // effect
+    useEffect(() => {
+        // simula carregamento inicial (ex: validar token)
+        const timer = setTimeout(() => {
+            setLoading(false)
+        }, 800)
+
+        return () => clearTimeout(timer)
+    }, [])
+
+    if (loading) {
+        return <SignInSkeleton />
     }
 
     return (
