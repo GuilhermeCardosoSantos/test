@@ -1,9 +1,11 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   images: {
-    domains: ["imgproductioncrm.s3.us-east-2.amazonaws.com"],
+    domains: [
+      "imgproductioncrm.s3.us-east-2.amazonaws.com",
+      "imgprodutos.s3.us-east-2.amazonaws.com",
+    ],
   },
-};
+}
 
-export default nextConfig;
+module.exports = nextConfig

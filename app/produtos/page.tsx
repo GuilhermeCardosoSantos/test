@@ -10,15 +10,7 @@ import { ProductCardSkeleton } from "@/components/skeletons/product-card-skeleto
 // ui
 import Button from "@/components/UI/button"
 // type
-type Product = {
-    codigo: string
-    codigo_categoria: string
-    descricao: string
-    imagem: string
-    nome: string
-    preco: number
-    referencia: string
-}
+import { Product } from "@/types/produtos"
 
 export default function ProductsPage() {
     // function
