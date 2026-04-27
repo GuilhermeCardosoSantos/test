@@ -28,8 +28,6 @@ Crie um arquivo `.env.local` na raiz do projeto:
 NEXT_PUBLIC_API_BASE=https://apihomolog.innovationbrindes.com.br/api/innova-dinamica
 ```
 
-> Ajuste conforme sua API.
-
 ---
 
 ### ▶️ Rodar o projeto
