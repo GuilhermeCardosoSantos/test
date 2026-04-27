@@ -108,6 +108,19 @@ http://localhost:3000
 - **Vitest**: escolhido para testes unitários por ser rápido, simples de configurar e integrar
 ---
 
+## 📊 Lighthouse
+
+### Desktop (Performance e Acessibilidade)
+
+📌 Resultado obtido:
+
+![Lighthouse Desktop](./public/page-signin.gif.gif)
+
+![Lighthouse Desktop](./public/page-produtos.gif)
+
+---
+
+
 ## 👨‍💻 Autor
 
 Guilherme Cardoso
