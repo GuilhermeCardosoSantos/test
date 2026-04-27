@@ -10,7 +10,7 @@ import { ProductCardSkeleton } from "@/components/skeletons/product-card-skeleto
 // ui
 import Button from "@/components/UI/button"
 // type
-import { Product } from "@/types/produtos"
+import { Product} from "@/types/produtos"
 
 export default function ProductsPage() {
     // function
