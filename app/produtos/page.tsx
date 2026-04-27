@@ -6,6 +6,7 @@ import { useState, useEffect } from "react"
 import { useProducts } from "@/hooks/useProducts"
 // componets
 import { ProductCard } from "@/components/product/product-card"
+import { ProductCardSkeleton } from "@/components/skeletons/product-card-skeleton"
 // type
 type Product = {
     codigo: string
@@ -34,6 +35,8 @@ export default function ProductsPage() {
     }, [data])
     useEffect(() => {
         const handleScroll = () => {
+            if(!data || isLoading) return
+
             const bottom =
                 window.innerHeight + window.scrollY >= document.body.offsetHeight - 200
 
@@ -49,7 +52,15 @@ export default function ProductsPage() {
     }, [data])
 
 
-    if (isLoading) return <p>Carregando...</p>
+    if (isLoading) {
+        return (
+            <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                {Array.from({ length: 20 }).map((_, i) => (
+                    <ProductCardSkeleton key={i} />
+                ))}
+            </div>
+        )
+    }
     if (error) return <p>Erro</p>
 
     return (
