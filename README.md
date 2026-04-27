@@ -114,9 +114,12 @@ http://localhost:3000
 
 📌 Resultado obtido:
 
-![Lighthouse Desktop](./public/page-signin.gif.gif)
+### SignIn
+![Lighthouse Desktop SignIn](./public/page-signin.gif.gif)
 
-![Lighthouse Desktop](./public/page-produtos.gif)
+
+### Produtos
+![Lighthouse Desktop Produtos](./public/page-produtos.gif)
 
 ---
 
