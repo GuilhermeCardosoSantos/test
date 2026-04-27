@@ -1,6 +1,8 @@
 import axios from "axios"
 // base
 import { API_BASE } from "./config"
+// store
+import { useAuthStore } from "@/store/auth.store"
 
 export const api = axios.create({
     baseURL: API_BASE
@@ -33,8 +35,11 @@ api.interceptors.response.use(
   (res) => res,
   (error) => {
     if (error.response?.status === 401) {
-      localStorage.removeItem("token")
-      window.location.href = "/login"
+      // clear user state and cookies
+      const logout = useAuthStore.getState().logout
+      logout()
+      document.cookie = "token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;"
+      window.location.href = "/auth/sign-in"
     }
 
     return Promise.reject(error)
